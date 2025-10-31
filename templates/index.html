@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Главная - Dota 2{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="container">
+        <h1>Добро пожаловать в мир Dota 2</h1>
+        <p>Присоединяйтесь к миллионам игроков по всему миру в эпических битвах!</p>
+        <a href="{{ url_for('heroes_page') }}" class="btn">Изучить героев</a>
+    </div>
+</div>
+
+<div class="features">
+    <div class="container">
+        <h2>Особенности Dota 2</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>120+ Героев</h3>
+                <p>Уникальные персонажи с различными способностями</p>
+            </div>
+            <div class="feature-card">
+                <h3>Бесплатная игра</h3>
+                <p>Все герои доступны с самого начала</p>
+            </div>
+            <div class="feature-card">
+                <h3>Киберспорт</h3>
+                <p>Профессиональные турниры с многомиллионными призами</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

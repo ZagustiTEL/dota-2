@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Герои - Dota 2{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Герои Dota 2</h1>
+    
+    <div class="heroes-grid">
+        {% for hero in heroes %}
+        <div class="hero-card">
+            <h3>{{ hero.name }}</h3>
+            <div class="hero-info">
+                <p><strong>Роль:</strong> {{ hero.role }}</p>
+                <p><strong>Атрибут:</strong> {{ hero.attribute }}</p>
+                <p>{{ hero.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
