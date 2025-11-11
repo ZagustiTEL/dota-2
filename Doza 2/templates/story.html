@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История генераций - Dota 2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📜 История генераций</h1>
+            <p>Последние сгенерированные билды</p>
+        </header>
+        
+        <main class="history-container">
+            <div class="actions">
+                <a href="/" class="back-btn">На главную</a>
+                <a href="/generate" class="generate-btn">Сгенерировать новый билд</a>
+            </div>
+            
+            {% if history %}
+                {% for build in history %}
+                <div class="history-item">
+                    <div class="history-hero">{{ build.hero }}</div>
+                    <div class="history-lane">{{ build.lane }}</div>
+                    
+                    <div class="skill-build">
+                        <strong>Стратегия:</strong> {{ build.skill_build }}
+                    </div>
+                    
+                    <div class="history-items">
+                        <div>
+                            <div class="item-category">🎁 Стартовые:</div>
+                            {% for item in build.starting_items %}
+                            <div class="item">{{ item }}</div>
+                            {% endfor %}
+                        </div>
+                        
+                        <div>
+                            <div class="item-category">⚡ Ранние:</div>
+                            {% for item in build.early_game %}
+                            <div class="item">{{ item }}</div>
+                            {% endfor %}
+                        </div>
+                        
+                        <div>
+                            <div class="item-category">💎 Коровые:</div>
+                            {% for item in build.core_items %}
+                            <div class="item">{{ item }}</div>
+                            {% endfor %}
+                        </div>
+                        
+                        <div>
+                            <div class="item-category">🔥 Поздние:</div>
+                            {% for item in build.late_game %}
+                            <div class="item">{{ item }}</div>
+                            {% endfor %}
+                        </div>
+                        
+                        <div>
+                            <div class="item-category">🎯 Нейтральные:</div>
+                            {% for item in build.neutral_items %}
+                            <div class="item">{{ item }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="history-timestamp">
+                        Сгенерировано: {{ build.created_at }}
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="empty-history">
+                    <h3>История пуста</h3>
+                    <p>Сгенерируйте первый билд, чтобы увидеть его здесь!</p>
+                    <a href="/generate" class="generate-btn" style="margin-top: 20px;">Сгенерировать билд</a>
+                </div>
+            {% endif %}
+            
+            <div class="actions">
+                <a href="/" class="back-btn">На главную</a>
+                <a href="/generate" class="generate-btn">Сгенерировать новый билд</a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

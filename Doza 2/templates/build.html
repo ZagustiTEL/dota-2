@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ваш случайный билд - Dota 2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Ваш случайный билд Dota 2</h1>
+            <a href="/" class="back-btn">← Назад</a>
+        </header>
+        
+        <main class="build-container">
+            <div class="build-header">
+                <h2 class="hero-name">{{ build.hero }}</h2>
+                <div class="lane-badge">{{ build.lane }}</div>
+            </div>
+            
+            <div class="build-sections">
+                <div class="build-section">
+                    <h3>🏹 Стратегия прокачки</h3>
+                    <div class="skill-build">
+                        <p>{{ build.skill_build }}</p>
+                    </div>
+                </div>
+                
+                <div class="build-section">
+                    <h3>🎁 Стартовые предметы</h3>
+                    <div class="items-grid">
+                        {% for item in build.starting_items %}
+                        <div class="item">{{ item }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="build-section">
+                    <h3>⚡ Ранняя игра</h3>
+                    <div class="items-grid">
+                        {% for item in build.early_game %}
+                        <div class="item">{{ item }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="build-section">
+                    <h3>💎 Коровые предметы</h3>
+                    <div class="items-grid">
+                        {% for item in build.core_items %}
+                        <div class="item">{{ item }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="build-section">
+                    <h3>🔥 Поздняя игра</h3>
+                    <div class="items-grid">
+                        {% for item in build.late_game %}
+                        <div class="item">{{ item }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="build-section">
+                    <h3>🎯 Нейтральные предметы</h3>
+                    <div class="items-grid">
+                        {% for item in build.neutral_items %}
+                        <div class="item">{{ item }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="actions">
+                <a href="/generate" class="generate-btn">Сгенерировать новый билд</a>
+                <a href="/" class="back-btn">На главную</a>
+                <a href="/history" class="back-btn">📜 История</a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
